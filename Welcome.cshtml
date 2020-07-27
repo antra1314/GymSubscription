@@ -1,0 +1,85 @@
+﻿@page
+@model StayFitGym.WelcomeModel
+
+
+<br />
+<h2 class="text-info">MEMBERSHIP</h2>
+
+<div class="border container" style="padding:30px">
+   
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            @*<div class="col-2">
+                <label asp-for="UserMembership.UserID"></label>
+            </div>*@
+            <div class="col-6">
+                <input type="hidden" asp-for="UserMembership.UserID" value="@TempData["CurrentUserName"]" readonly="readonly" class="form-control" />
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="UserMembership.Location"></label>
+            </div>
+            <div class="col-6 custom-select-sm">
+
+                <select asp-for="UserMembership.Location" id="Location" name="Location" class="col-6 form-control">
+                    <option value="Glasgow">Glasgow</option>
+                    <option value="London">London</option>
+                    <option value="Edinburgh">Edinburgh</option>
+
+                </select>
+            </div>
+            <span asp-validation-for="UserMembership.Location" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="UserMembership.Plan"></label>
+            </div>
+            <div class="col-6 custom-select-sm">
+
+                <select asp-for="UserMembership.Plan" id="Plan" name="Plan" class="col-6 form-control">
+                    <option value="DailyPass">DailyPass</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+
+                </select>
+            </div>
+
+            <span asp-validation-for="UserMembership.Plan" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="UserMembership.Payment"></label>
+            </div>
+            <div class="col-6 custom-select-sm">
+
+                <select asp-for="UserMembership.Payment" id="Payment" name="Payment" class="col-6 form-control">
+                    <option value="DebitCard">DebitCard</option>
+                    <option value="CreditCard">CreditCard</option>
+                    <option value="PayPal">PayPal</option>
+
+                </select>
+            </div>
+            <span asp-validation-for="UserMembership.Payment" class="text-danger"></span>
+        </div>
+        <br />
+
+
+        <div class="form-group row col-8">
+            <div class="col-3 offset-4">
+                <input type="submit" value="Pay" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-success form-control">Logout</a>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
